@@ -39,13 +39,24 @@ namespace OptimisedTravellerConsole
             }
             Console.WriteLine("Your travel options are:");
             int i=1;
+            string viableTravelMode="";
+            int viableTime=0;
             foreach(var matri in matrices)
             {
+                if(i==1)
+                    viableTime = Convert.ToInt32(matri.Value.rows.FirstOrDefault().elements.FirstOrDefault().duration.value);
                 Console.WriteLine("Option "+i+++":");
                 Console.WriteLine("Mode of travel : "+matri.Key);
+                if(Convert.ToInt32(matri.Value.rows.FirstOrDefault().elements.FirstOrDefault().duration.value) <= viableTime)
+                {
+                    viableTime = Convert.ToInt32(matri.Value.rows.FirstOrDefault().elements.FirstOrDefault().duration.value);
+                    viableTravelMode = matri.Key;
+                }
                 Console.WriteLine("Distance to be travelled :"+matri.Value.rows.FirstOrDefault().elements.FirstOrDefault().distance.text);
                 Console.WriteLine("Duration for the travel  :" + matri.Value.rows.FirstOrDefault().elements.FirstOrDefault().duration.text);
             }
+            Console.WriteLine("\n Your viable options is to use the following mode of travel :"
+                + viableTravelMode);
             Console.ReadLine();
         }
     }
