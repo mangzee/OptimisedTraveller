@@ -11,9 +11,9 @@ namespace OptimisedTravellerConsole
         public enum Modes
         {
             driving,
-            walking
-            //bicycling,
-            //transit
+            walking,
+            bicycling,
+            transit
         };
     }
 }
